@@ -21,15 +21,18 @@
     .nav a{color:#fff;font-weight:800;font-size:.95rem;letter-spacing:.17em;text-transform:uppercase;padding:.55rem 1.2rem;transition:opacity .25s}
     .nav a:hover{opacity:.85}
 
-    /* --- SWIPER HERO FIX --- */
+    /* --- SWIPER HERO --- */
     .swiper{width:100vw;height:100vh}
-    .swiper-wrapper{display:flex}
-    .swiper-slide{flex-shrink:0;width:100%;height:100%;position:relative}
     .swiper-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
     .swiper-slide:hover img{transform:scale(1.04) rotate(.3deg)}
     .slide-caption{position:absolute;bottom:0;left:0;width:100%;padding:1rem 2rem;font-size:.95rem;background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,.65)100%);color:#fff;opacity:0;transition:opacity .3s}
     .swiper-slide:hover .slide-caption{opacity:1}
-    .swiper-button-prev,.swiper-button-next{color:#fff;width:52px;height:52px}
+
+    /* Hero arrows */
+    .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.85);display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:var(--shadow);transition:background .25s}
+    .hero-arrow:hover{background:#fff}
+    .hero-arrow svg{width:28px;height:28px;stroke:var(--ink);stroke-width:2}
+    
 
     /* --- ARROW ICON --- */
     .arrow{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);width:34px;height:34px;animation:bounce 2s infinite}
@@ -64,6 +67,8 @@
 
     /* Footer */
     footer{text-align:center;padding:2rem 0;font-size:.85rem;font-style:italic;color:#555}
+    .hero-prev{left:1rem}
+    .hero-next{right:1rem}
   </style>
 </head>
 <body>
@@ -88,10 +93,10 @@
         <div class="swiper-slide relative"><img src="images/BASKETBALL.jpg" loading="lazy" alt="Basketball"><div class="slide-caption">Basketball court</div></div>
         <div class="swiper-slide relative"><img src="images/MANCAVE.jpg" loading="lazy" alt="Media"><div class="slide-caption">Man-cave media loft</div></div>
       </div>
-      <button id="prev" class="hero-arrow left-4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button id="next" class="hero-arrow right-4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
-      <button id="heroPrev" class="hero-btn left-6" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
-      <button id="heroNext" class="hero-btn right-6" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      
+      
+      <button id="heroPrev" class=hero-arrow hero-prev" aria-label="Previous slide"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button id="heroNext" class=hero-arrow hero-next" aria-label="Next slide"><svg viewBox="0 0 24 24" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
       <div class="swiper-pagination !bottom-8"></div>
     </div>
     <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
@@ -119,6 +124,6 @@
   <footer>&copy; <span id="y"></span> Paul Sweeney · REALTOR · ARTIST · FRIEND.</footer>
 
   <!-- SCRIPTS -->
-  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>const swiper=new Swiper('.swiper',{loop:true,preloadImages:false,lazy:{loadPrevNext:true},autoplay:{delay:5000,disableOnInteraction:false},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});const bar=document.getElementById('bar');window.addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;bar.style.transform=`scaleX(${s/d})`});let last=0;const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('hide',y>last&&y>150);last=y});const io=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add('active'),io.unobserve(t.target))})},{threshold:.12});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(x=>io.observe(x));document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>const swiper=new Swiper('.swiper',{loop:true,preloadImages:false,lazy:{loadPrevNext:true},autoplay:{delay:5000,disableOnInteraction:false},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'#heroNext',prevEl:'#heroPrev'}});const bar=document.getElementById('bar');window.addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;bar.style.transform=`scaleX(${s/d})`});let last=0;const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('hide',y>last&&y>150);last=y});const io=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add('active'),io.unobserve(t.target))})},{threshold:.12});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(x=>io.observe(x));document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
