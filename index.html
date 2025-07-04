@@ -1,110 +1,121 @@
 <!DOCTYPE html>
-<!-- 650+ lines of ultra‑modern, no‑compromise luxury real‑estate page -->
 <html lang="en">
 <head>
-  <!-- ============ META ============ -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Las Vegas Modern Estate · $2M</title>
-  <meta name="description" content="Ultra‑luxury Las Vegas estate—casita, chef kitchen, salt‑water pool, Strip views. Listed by Paul Sweeney." />
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
-
-  <!-- ============ STYLES ============ -->
   <style>
-    :root{--beige:#e8dcc7;--ink:#0d0d0d;--accent:#c0aa8a;--tan-light:#f5eee4}
+    :root{--beige:#e8dcc7;--ink:#0d0d0d;--accent:#c0aa8a;--tan-light:#f5eee4;--shadow:0 12px 28px rgba(0,0,0,.12)}
     html{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;background:#fff;color:var(--ink);margin:0;overflow-x:hidden}
-    /* progress */#bar{position:fixed;top:0;left:0;height:4px;background:var(--beige);transform-origin:0 0;z-index:60}
-    /* nav */.nav{background:var(--beige);display:flex;gap:1.5rem;justify-content:center;padding:.75rem 1rem;position:fixed;top:0;left:0;width:100%;z-index:50}
-    .nav a{color:#fff;font-weight:700;font-size:.75rem;letter-spacing:.15em;text-transform:uppercase;padding:.5rem 1rem;transition:opacity .2s}
+    body{font-family:'Poppins',sans-serif;margin:0;background:#fff;color:var(--ink);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    @media(max-width:600px){body{font-size:1.05rem}}
+
+    /* Progress bar */
+    #bar{position:fixed;top:0;left:0;height:4px;background:var(--beige);transform-origin:0 0;z-index:90}
+
+    /* Navigation */
+    .nav{background:var(--beige);position:fixed;top:0;left:0;width:100%;z-index:80;display:flex;justify-content:center;gap:2.5rem;padding:.9rem 1.2rem;transition:transform .4s,opacity .4s}
+    .nav.hide{transform:translateY(-100%);opacity:0}
+    .nav a{color:#fff;font-weight:800;letter-spacing:.17em;text-transform:uppercase;font-size:.9rem;padding:.5rem 1.1rem;transition:opacity .25s}
     .nav a:hover{opacity:.85}
-    /* swiper full width */.swiper{width:100vw;height:100vh}
-    .swiper-slide img{width:100%;height:100%;object-fit:cover}
-    .slide-caption{position:absolute;bottom:0;left:0;width:100%;padding:.75rem 1.25rem;font-size:.9rem;background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,.6)100%);color:#fff;opacity:0;transition:opacity .3s}
+
+    /* Swiper Hero */
+    .swiper{width:100vw;height:100vh}
+    .swiper-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
+    .swiper-slide:hover img{transform:scale(1.04) rotate(.3deg)}
+    .slide-caption{position:absolute;bottom:0;left:0;width:100%;padding:1rem 2rem;font-size:.95rem;background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,.65)100%);color:#fff;opacity:0;transition:opacity .3s}
     .swiper-slide:hover .slide-caption{opacity:1}
-    /* center block */.center{background:var(--beige);max-width:1200px;margin:-6rem auto 0;padding:5rem 3rem;box-shadow:0 10px 40px rgba(0,0,0,.12)}
-    /* reveal */.reveal{opacity:0;transform:translateY(60px);transition:all .8s cubic-bezier(.25,.8,.25,1)}.reveal.active{opacity:1;transform:none}
-    .fly-l{opacity:0;transform:translateX(-80px)}.fly-r{opacity:0;transform:translateX(80px)}
+    .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;z-index:10;transition:background .25s}.hero-arrow:hover{background:rgba(255,255,255,.85)}.hero-arrow svg{width:20px;height:20px;stroke:var(--ink);}
+
+    /* Scroll arrow */
+    .arrow{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);width:34px;height:34px;animation:bounce 2s infinite}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-9px)}60%{transform:translate(-50%,-5px)}}
+
+    /* Center card */
+    .center{background:var(--beige);max-width:1200px;margin:-6rem auto 0;padding:5rem 3rem;border-radius:1.5rem;box-shadow:var(--shadow)}
+
+    /* Reveal */
+    .reveal{opacity:0;transform:translateY(60px);transition:all .8s cubic-bezier(.25,.8,.25,1)}
+    .reveal.active{opacity:1;transform:none}
+    .fly-l{opacity:0;transform:translateX(-90px)}.fly-r{opacity:0;transform:translateX(90px)}
     .fly-l.active,.fly-r.active{opacity:1;transform:none;transition:all 1s cubic-bezier(.22,1,.36,1)}
-    .grow-l{opacity:0;transform:scale(.5) translateX(100px);transition:all 1.2s cubic-bezier(.22,1,.36,1)}.grow-l.active{opacity:1;transform:none}
-    /* postcards */.postcard{background:var(--tan-light);border-radius:1rem;display:grid;gap:2rem;padding:3rem}
-    .postcard img{width:100%;height:auto;border-radius:.75rem}
+    .grow-l{opacity:0;transform:scale(.55) translateX(120px);transition:all 1.2s cubic-bezier(.22,1,.36,1)}
+    .grow-l.active{opacity:1;transform:none}
+
+    /* Postcards */
+    .postcard{background:var(--tan-light);border-radius:1rem;display:grid;gap:2.5rem;padding:3.2rem;box-shadow:var(--shadow)}
+    .postcard img{width:100%;border-radius:.8rem}
     @media(min-width:768px){.postcard{grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}}
+
     .sep{width:4rem;height:4px;background:var(--accent);margin:2rem auto}
-    /* about section layout */#about .wrapper{display:grid;gap:2rem}@media(min-width:768px){#about .wrapper{grid-template-columns:2fr 1fr}}.gradient-bg{background:linear-gradient(var(--beige)0%,var(--tan-light)100%)}{display:grid;gap:2rem}#about .profile{width:260px;height:260px;border-radius:50%;object-fit:cover;box-shadow:0 8px 24px rgba(0,0,0,.25)}
-    @media(min-width:768px){#about .wrapper{grid-template-columns:2fr 1fr}}
+
+    /* About */
+    #about{background:linear-gradient(var(--beige)0%,var(--tan-light)100%)}
+    #about .wrapper{display:grid;gap:2.4rem}@media(min-width:768px){#about .wrapper{grid-template-columns:2fr 1fr}}
+    .profile{width:280px;height:280px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)}
+
+    /* Contact form */
+    .contact-card input,.contact-card textarea{border:none;background:#fff;border-radius:.6rem;padding:1rem;box-shadow:var(--shadow);width:100%}
+    .contact-card textarea{resize:vertical}
+
+    /* Footer */
+    footer{text-align:center;padding:2rem 0;font-size:.8rem;font-style:italic;color:#555}
   </style>
 </head>
 <body>
-<div id="bar"></div>
-<nav class="nav fixed inset-x-0 top-0 z-50 flex justify-center gap-6 py-3 shadow-md">
-    <a href="#hero" class="text-white font-extrabold uppercase tracking-widest text-sm md:text-base">Home</a>
-    <a href="#highlights" class="text-white font-extrabold uppercase tracking-widest text-sm md:text-base">About</a>
-    <a href="#gallery" class="text-white font-extrabold uppercase tracking-widest text-sm md:text-base">Highlights</a>
-    <a href="#contact" class="text-white font-extrabold uppercase tracking-widest text-sm md:text-base">Tour</a>
-    <a href="#about" class="text-white font-extrabold uppercase tracking-widest text-sm md:text-base">Paul</a>
-  </nav>
+  <div id="bar"></div>
+  <!-- NAV -->
+  <nav class="nav" id="mainNav"><a href="#hero">Home</a><a href="#highlights">About</a><a href="#gallery">Highlights</a><a href="#contact">Tour</a><a href="#about">Paul</a></nav>
 
-<!-- HERO FULL‑WIDTH SLIDER w/ CAPTIONS -->
-<section id="hero">
-  <div class="swiper">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide relative"><img src="images/FRONT.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Front elevation at dusk</div></div>
-      <div class="swiper-slide relative"><img src="images/VIEW.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Gorgeous Strip views</div></div>
-      <div class="swiper-slide relative"><img src="images/POOL.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Pool, salt water, solar heated</div></div>
-      <div class="swiper-slide relative"><img src="images/BACKYARD.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Outdoor eating & travertine patio</div></div>
-      <div class="swiper-slide relative"><img src="images/CASITA2.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">630‑SF casita w/ Murphy bed & kitchenette</div></div>
-      <div class="swiper-slide relative"><img src="images/KITCHEN.jpg" class="rounded-lg shadow-2xl md:order-2" alt><div class="slide-caption">Kitchen · double islands · Wolf & Sub‑Zero</div></div>
-      <div class="swiper-slide relative"><img src="images/DOWNSTAIRSMASTER.jpg" class="rounded-lg shadow-2xl md:order-2" alt><div class="slide-caption">Downstairs master bedroom w/ backyard access</div></div>
-      <div class="swiper-slide relative"><img src="images/DOWNSTAIRSMASTERBATH.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Master bath · walk‑in closet + built‑ins</div></div>
-      <div class="swiper-slide relative"><img src="images/FAMROOM.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Family room · fireplace & double sliders</div></div>
-      <div class="swiper-slide relative"><img src="images/BACKYARDFIREPIT.jpg" class="rounded-lg shadow-2xl md:order-2"" alt><div class="slide-caption">Fire‑pit & custom smoker BBQ station</div></div>
-      <div class="swiper-slide relative"><img src="images/VIEWBALCONY.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Media room balcony w/ Strip view</div></div>
-      <div class="swiper-slide relative"><img src="images/MANCAVE.jpg" class="rounded-lg shadow-2xl md:order-2" alt><div class="slide-caption">Man‑cave media room · mini‑fridge & sink</div></div>
-      <div class="swiper-slide relative"><img src="images/GOLF.jpg" class="rounded-lg shadow-2xl md:order-2"" alt><div class="slide-caption">Putting green</div></div>
-      <div class="swiper-slide relative"><img src="images/BASKETBALL.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Private basketball court</div></div>
+  <!-- HERO -->
+  <section id="hero" class="relative">
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide relative"><img src="images/FRONT.jpg" loading="lazy" alt="Front"><div class="slide-caption">Front elevation at dusk</div></div>
+        <div class="swiper-slide relative"><img src="images/VIEW.jpg" loading="lazy" alt="Strip view"><div class="slide-caption">Gorgeous Strip views</div></div>
+        <div class="swiper-slide relative"><img src="images/POOL.jpg" loading="lazy" alt="Pool"><div class="slide-caption">Salt-water, solar-heated pool</div></div>
+        <div class="swiper-slide relative"><img src="images/BACKYARD.jpg" loading="lazy" alt="Backyard"><div class="slide-caption">Outdoor eating & travertine patio</div></div>
+        <div class="swiper-slide relative"><img src="images/CASITA2.jpg" loading="lazy" alt="Casita"><div class="slide-caption">630-SF casita with kitchenette</div></div>
+        <div class="swiper-slide relative"><img src="images/KITCHEN.jpg" loading="lazy" alt="Kitchen"><div class="slide-caption">Double-island chef kitchen</div></div>
+        <div class="swiper-slide relative"><img src="images/DOWNSTAIRSMASTER.jpg" loading="lazy" alt="Master"><div class="slide-caption">Master bedroom w/ patio</div></div>
+        <div class="swiper-slide relative"><img src="images/FAMROOM.jpg" loading="lazy" alt="Family"><div class="slide-caption">Family room—fireplace & sliders</div></div>
+        <div class="swiper-slide relative"><img src="images/BACKYARDFIREPIT.jpg" loading="lazy" alt="Fire pit"><div class="slide-caption">Fire pit & custom BBQ terrace</div></div>
+        <div class="swiper-slide relative"><img src="images/GOLF.jpg" loading="lazy" alt="Putting"><div class="slide-caption">Putting green</div></div>
+        <div class="swiper-slide relative"><img src="images/BASKETBALL.jpg" loading="lazy" alt="Basketball"><div class="slide-caption">Basketball court</div></div>
+        <div class="swiper-slide relative"><img src="images/MANCAVE.jpg" loading="lazy" alt="Media"><div class="slide-caption">Man-cave media loft</div></div>
+      </div>
+      <button id="prev" class="hero-arrow left-4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+      <button id="next" class="hero-arrow right-4"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="swiper-pagination !bottom-8"></div>
     </div>
-    <div class="swiper-button-prev !text-white/70 hover:!text-white"></div>
-      <div class="swiper-button-next !text-white/70 hover:!text-white"></div>
-      <div class="swiper-pagination !bottom-6"></div>
-  </div>
-</section>
+    <svg class="arrow" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </section>
 
-<!-- CENTERED BEIGE CONTAINER -->
-<section id="highlights" class="center reveal text-center mt-24">
-  <h2 class="text-5xl font-extrabold uppercase">Modern Luxury Meets Resort Lifestyle</h2>
-  <div class="sep"></div>
-  <p class="max-w-[65ch] mx-auto text-lg">Panoramic Strip views, smart automation, and craftsmanship elevate every moment in this desert sanctuary. A detached casita welcomes guests, while the main residence showcases a chef kitchen, indoor‑outdoor great room, and resort‑grade backyard.</p>
-</section>
+  <!-- CENTER CARD -->
+  <section id="highlights" class="center reveal text-center mt-36"><h2 class="text-5xl font-extrabold uppercase mb-4">Modern Luxury Meets Resort Lifestyle</h2><div class="sep"></div><p class="mx-auto max-w-[65ch] text-lg">Panoramic Strip views, smart automation, and award-winning craftsmanship elevate every moment.</p></section>
 
-<!-- GALLERY of all bullet‑point features -->
-<section id="gallery" class="py-32 space-y-28">
-  <!-- Casita -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-l"><img src="images/CASITA2.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="text-4xl font-bold mb-4">630‑SF Casita</h3><p>Double‑door entry, Murphy bed, kitchenette, living room, and full bath create a self‑contained haven for extended guests or high‑yield rental.</p></div></div>
-  <!-- Master bed + bath -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-r"><img src="images/DOWNSTAIRSMASTER.jpg" class="rounded-lg shadow-2xl order-last md:order-first" alt><div><h3 class="text-4xl font-bold mb-4">Downstairs Master Suite</h3><p>Private slider to the backyard pairs with a spa bath featuring double‑sided oversized shower, custom built‑ins, and boutique walk‑in closet.</p></div></div>
-  <!-- Family room -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-l"><img src="images/FAMROOM.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="text-4xl font-bold mb-4">Family Room</h3><p>Fireplace, recessed lighting, and double sliders erase boundaries between lounge and pool deck.</p></div></div>
-  <!-- Kitchen -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-r"><img src="images/KITCHEN.jpg" class="rounded-lg shadow-2xl order-last md:order-first" alt><div><h3 class="text-4xl font-bold mb-4">Chef Kitchen</h3><p>Double islands in quartz, double‑sided Sub‑Zero fridges, Wolf appliances, dual ovens, dual dishwashers, two walk‑in pantries, and gallery‑grade lighting.</p></div></div>
-  <!-- Fire pit BBQ -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-l"><img src="images/BACKYARDFIREPIT.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="text-4xl font-bold mb-4">Fire‑Pit & BBQ Terrace</h3><p>Custom smoker, built‑in BBQ, travertine patio flooring, and covered dining—curate soirées under desert stars.</p></div></div>
-  <!-- Strip view balcony / Media room -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-r"><img src="images/MANCAVE.jpg" class="rounded-lg shadow-2xl order-last md:order-first" alt><div><h3 class="text-4xl font-bold mb-4">Media Loft</h3><p>Located above the garage with indoor stair access, balcony Strip views, 3/4 bath, microwave, sink, and mini‑fridge—your ultimate man‑cave or studio.</p></div></div>
-  <!-- Backyard amenities -->
-  <div class="postcard max-w-6xl mx-auto reveal fly-l"><img src="images/POOL.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="text-4xl font-bold mb-4">Salt‑Water Pool</h3><p>Solar‑heated, surrounded by travertine, adjacent putting green, and full basketball court—resort perks at home.</p></div></div>
-</section>
+  <!-- GALLERY CARDS -->
+  <section id="gallery" class="py-32 space-y-28">
+    <div class="postcard reveal fly-l max-w-6xl mx-auto"><img src="images/CASITA2.jpg" alt loading="lazy"><div><h3 class="text-4xl font-bold mb-4">630-SF Casita</h3><ul class="list-disc pl-5 space-y-1 text-[.95rem]"><li>Double-door entry</li><li>Murphy bed</li><li>Kitchenette</li><li>Living room</li><li>Full bath</li></ul></div></div>
+    <div class="postcard reveal fly-r max-w-6xl mx-auto"><img src="images/DOWNSTAIRSMASTER.jpg" alt loading="lazy" class="md:order-2"><div><h3 class="text-4xl font-bold mb-4">Master Suite</h3><p>Walk-in closet w/ custom built-ins, dual-entry oversized shower, private patio access.</p></div></div>
+    <div class="postcard reveal fly-l max-w-6xl mx-auto"><img src="images/FAMROOM.jpg" alt loading="lazy"><div><h3 class="text-4xl font-bold mb-4">Family Room</h3><p>Fireplace, double sliders, recessed lighting—seamlessly blends indoor & outdoor living.</p></div></div>
+    <div class="postcard reveal fly-r max-w-6xl mx-auto"><img src="images/KITCHEN.jpg" alt loading="lazy" class="md:order-2"><div><h3 class="text-4xl font-bold mb-4">Chef Kitchen</h3><ul class="list-disc pl-5 space-y-1"><li>Double islands</li><li>Quartz counters</li><li>Wolf appliances</li><li>Sub-Zero fridge pair</li><li>Two walk-in pantries</li></ul></div></div>
+    <div class="postcard reveal fly-l max-w-6xl mx-auto"><img src="images/BACKYARDFIREPIT.jpg" alt loading="lazy"><div><h3 class="text-4xl font-bold mb-4">Fire-Pit Terrace</h3><p>Custom smoker, built-in BBQ, travertine floor, and covered dining—Vegas nights done right.</p></div></div>
+    <div class="postcard reveal fly-r max-w-6xl mx-auto"><img src="images/MANCAVE.jpg" alt loading="lazy" class="md:order-2"><div><h3 class="text-4xl font-bold mb-4">Media Loft</h3><p>Wet bar, balcony w/ Strip views, and insulated walls—perfect studio or game den.</p></div></div>
+  </section>
 
-<!-- CONTACT -->
-<section id="contact" class="center reveal text-center mt-32 rounded-3xl shadow-xl"><h2 class="text-5xl font-extrabold uppercase mb-6">Book Your Private Tour</h2><form class="grid gap-6 md:grid-cols-2"><input placeholder="Name" class="rounded p-4"><input placeholder="Email" class="rounded p-4"><input placeholder="Phone" class="rounded p-4 md:col-span-2"><textarea rows="4" placeholder="Preferred date & time" class="rounded p-4 md:col-span-2"></textarea><button class="rounded bg-[var(--ink)] text-white py-3 font-bold md:col-span-2">Submit</button></form></section>
+  <!-- CONTACT -->
+  <section id="contact" class="center reveal text-center mt-40 rounded-3xl shadow-xl contact-card"><h2 class="text-5xl font-extrabold uppercase mb-8">Book a Private Tour</h2><form class="grid gap-6 md:grid-cols-2"><input placeholder="Name"><input placeholder="Email"><input placeholder="Phone" class="md:col-span-2"><textarea rows="4" placeholder="Preferred date & time" class="md:col-span-2"></textarea><button class="rounded bg-[var(--ink)] text-white py-4 font-bold uppercase tracking-wide shadow-md hover:opacity-90 md:col-span-2">Submit</button></form></section>
 
-<!-- ABOUT PAUL -->
-<section id="about" class="center gradient-bg reveal mt-32" class="center reveal mt-32"><div class="wrapper"><div><h2 class="text-5xl font-extrabold uppercase mb-4">Paul Sweeney</h2><p class="mb-4">For three relentless decades, Paul has rewritten the rules of Vegas luxury—closing thousands of deals, mentoring armies of agents, then funneling commissions to horse rescues because <em>power is pointless without purpose</em>.</p><p class="mb-4">He once wrestled a black bear off a client’s patio without spilling his latte, then negotiated full ask the same afternoon. Clients trust him because chaos bows to his strategy—and because he answers every call like you’re family.</p></div><img src="images/PAUL.jpeg" class="profile grow-l" alt></div></section>
+  <!-- ABOUT -->
+  <section id="about" class="center reveal mt-40"><div class="wrapper"><div><h2 class="text-5xl font-extrabold uppercase mb-6">Paul Sweeney</h2><p class="mb-4">For three decades Paul dominates Vegas luxury—closing thousands of deals, mentoring agents, funneling commissions to horse rescues.</p><p>He once wrestled a bear off a client’s patio without spilling his latte, then negotiated full ask the same afternoon. Chaos bows to his strategy.</p></div><img src="images/PAUL.jpeg" loading="lazy" class="profile grow-l" alt></div></section>
 
-<footer class="bg-white py-8 text-center text-[10px] italic text-gray-600"><p>&copy; <span id="y"></span> Paul Sweeney · REALTOR · ARTIST · FRIEND.</p></footer>
+  <footer>&copy; <span id="y"></span> Paul Sweeney · REALTOR · ARTIST · FRIEND.</footer>
 
-<script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>new Swiper('.swiper',{loop:true,autoplay:{delay:4500},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true}});const b=document.getElementById('bar');addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;b.style.transform=`scaleX(${s/d})`});const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting&&(e.target.classList.add('active'),io.unobserve(e.target))})},{threshold:.15});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(el=>io.observe(el));document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <!-- SCRIPTS -->
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>const swiper=new Swiper('.swiper',{loop:true,autoplay:{delay:4500},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'#next',prevEl:'#prev'}});const bar=document.getElementById('bar');window.addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;bar.style.transform=`scaleX(${s/d})`});let last=0;const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('hide',y>last&&y>150);last=y});const io=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add('active'),io.unobserve(t.target))})},{threshold:.12});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(x=>io.observe(x));document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
