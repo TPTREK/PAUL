@@ -1,335 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ============================================================= -->
-  <!-- META & SEO -->
-  <!-- ============================================================= -->
+  <!-- ⚡ META & SEO -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Las Vegas Modern Estate · $2,000,000</title>
-  <meta name="description" content="A resort‑grade modern estate in Las Vegas—private casita, chef kitchen, salt‑water pool, Strip views. Listed by Paul Sweeney." />
+  <title>Las Vegas Modern Estate · $2M</title>
+  <meta name="description" content="A resort-grade modern estate in Las Vegas—private casita, chef kitchen, salt-water pool, Strip views. Listed by Paul Sweeney." />
   <meta property="og:title" content="Las Vegas Modern Estate · $2M" />
-  <meta property="og:description" content="Resort‑grade luxury meets modern minimalism. Schedule a private tour." />
-  <meta property="og:image" content="images/og.jpg" />
+  <meta property="og:description" content="Resort-grade luxury meets modern minimalism. Schedule a private tour." />
+  <meta property="og:image" content="images/OG.jpg" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://your-domain.com" />
   <meta name="twitter:card" content="summary_large_image" />
 
-  <!-- ============================================================= -->
-  <!-- LIBRARIES & FONTS  -->
-  <!-- ============================================================= -->
+  <!-- ⚡ LIBS -->
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
 
-  <!-- ============================================================= -->
-  <!-- CUSTOM STYLES  -->
-  <!-- ============================================================= -->
+  <!-- ⚡ STYLES -->
   <style>
-    :root {
-      --beige: #e8dcc7;
-      --ink: #0d0d0d;
-      --white: #ffffff;
-      --accent: #c0aa8a;
-    }
-
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: var(--white);
-      color: var(--ink);
-      overflow-x: hidden;
-    }
-
-    /* ---------------- Scroll Progress Bar ---------------- */
-    #progress {
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 4px;
-      background: var(--beige);
-      transform-origin: 0 0;
-      z-index: 50;
-    }
-
-    /* ---------------- Universal Animations ---------------- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(60px);
-      transition: opacity .8s ease, transform .8s cubic-bezier(.25,.8,.25,1);
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: none;
-    }
-
-    .fly-left {
-      opacity: 0;
-      transform: translateX(-60px);
-    }
-
-    .fly-right {
-      opacity: 0;
-      transform: translateX(60px);
-    }
-
-    .fly-left.active,
-    .fly-right.active {
-      opacity: 1;
-      transform: translateX(0);
-      transition: opacity .9s ease, transform 1s cubic-bezier(.22,1,.36,1);
-    }
-
-    /* ---------------- Postcard Background ---------------- */
-    .postcard {
-      background: var(--beige);
-      border-radius: 1rem;
-    }
-
-    /* ---------------- Header Banner ---------------- */
-    .banner {
-      background: var(--beige);
-      color: var(--ink);
-    }
-
-    /* ---------------- Floating Nav ---------------- */
-    .nav-float a {
-      transition: transform .25s, background .25s;
-    }
-
-    .nav-float a:hover {
-      transform: translateX(-6px);
-      background: var(--ink);
-    }
-
-    /* ---------------- Hide scrollbar inside Swiper ---------------- */
-    .swiper::-webkit-scrollbar {
-      display: none;
-    }
-
-    /* ---------------- Decorative Separator ---------------- */
-    .sep {
-      width: 4rem;
-      height: 4px;
-      margin: 2rem auto;
-      background: var(--accent);
-    }
-
-    /* ---------------- Utility ---------------- */
-    .shadow-hero {
-      box-shadow: 0 20px 60px rgba(0,0,0,.4);
-    }
+    :root{--beige:#e8dcc7;--ink:#0d0d0d;--accent:#c0aa8a;--tan-light:#f5eee4}
+    html{scroll-behavior:smooth}
+    body{font-family:'Poppins',sans-serif;background:#fff;color:var(--ink);overflow-x:hidden}
+    /* progress */#bar{position:fixed;top:0;left:0;height:4px;background:var(--beige);transform-origin:0 0;z-index:50}
+    /* header */.banner{background:var(--beige)}
+    /* nav */.nav a{transition:.3s}
+    .nav a:hover{transform:translateX(-6px);background:var(--ink)}
+    /* reveal */.reveal{opacity:0;transform:translateY(60px);transition:all .8s cubic-bezier(.25,.8,.25,1)}
+    .reveal.active{opacity:1;transform:none}
+    .fly-l{opacity:0;transform:translateX(-60px)}.fly-r{opacity:0;transform:translateX(60px)}
+    .fly-l.active,.fly-r.active{opacity:1;transform:none;transition:all 1s cubic-bezier(.22,1,.36,1)}
+    .grow-l{opacity:0;transform:scale(.5) translateX(100px);transition:all 1.2s cubic-bezier(.22,1,.36,1)}
+    .grow-l.active{opacity:1;transform:none}
+    /* postcard */.postcard{background:var(--tan-light);border-radius:1rem}
+    .sep{width:4rem;height:4px;margin:2rem auto;background:var(--accent)}
+    .swiper::-webkit-scrollbar{display:none}
+    @media(min-width:768px){.postcard{grid-template-columns:repeat(2,minmax(0,1fr))}}
   </style>
 </head>
 <body>
-  <!-- ============================================================= -->
-  <!-- SCROLL PROGRESS BAR -->
-  <!-- ============================================================= -->
-  <div id="progress"></div>
+  <div id="bar"></div>
 
-  <!-- ============================================================= -->
-  <!-- FIXED HEADER BANNER -->
-  <!-- ============================================================= -->
-  <header class="banner pointer-events-none fixed inset-x-0 top-0 z-30 flex justify-center py-3 shadow-md">
-    <h1 class="text-center text-xs font-extrabold tracking-widest md:text-sm lg:text-base">PAUL SWEENEY · REALTOR · ARTIST · FRIEND</h1>
+  <!-- HEADER -->
+  <header class="banner fixed inset-x-0 top-0 z-30 flex justify-center py-3 shadow-md pointer-events-none">
+    <h1 class="text-xs font-extrabold tracking-widest md:text-sm">PAUL SWEENEY · REALTOR · ARTIST · FRIEND</h1>
   </header>
 
-  <!-- ============================================================= -->
-  <!-- FLOATING NAVIGATION -->
-  <!-- ============================================================= -->
-  <nav class="nav-float fixed bottom-6 right-6 z-40">
+  <!-- NAV -->
+  <nav class="nav fixed bottom-6 right-6 z-40 text-[10px] font-bold uppercase tracking-widest text-white">
     <ul class="space-y-2 text-right">
-      <li><a href="#hero" class="block rounded bg-[var(--ink)]/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Top</a></li>
-      <li><a href="#highlights" class="block rounded bg-[var(--ink)]/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Highlights</a></li>
-      <li><a href="#gallery" class="block rounded bg-[var(--ink)]/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Gallery</a></li>
-      <li><a href="#contact" class="block rounded bg-[var(--ink)]/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Tour</a></li>
-      <li><a href="#about" class="block rounded bg-[var(--ink)]/80 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-white">Paul</a></li>
+      <li><a href="#hero" class="block rounded bg-[var(--ink)]/80 px-3 py-1">Top</a></li>
+      <li><a href="#highlights" class="block rounded bg-[var(--ink)]/80 px-3 py-1">Highlights</a></li>
+      <li><a href="#gallery" class="block rounded bg-[var(--ink)]/80 px-3 py-1">Gallery</a></li>
+      <li><a href="#contact" class="block rounded bg-[var(--ink)]/80 px-3 py-1">Tour</a></li>
+      <li><a href="#about" class="block rounded bg-[var(--ink)]/80 px-3 py-1">Paul</a></li>
     </ul>
   </nav>
 
-  <!-- ============================================================= -->
-  <!-- HERO – FULLSCREEN SLIDESHOW -->
-  <!-- ============================================================= -->
+  <!-- HERO -->
   <section id="hero" class="relative h-screen w-full">
-    <div class="swiper h-full w-full shadow-hero">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="images/front.jpg" alt="Front elevation" class="h-full w-full object-cover" /></div>
-        <div class="swiper-slide"><img src="images/view.jpg" alt="Las Vegas Strip view" class="h-full w-full object-cover" /></div>
-        <div class="swiper-slide"><img src="images/pool.jpg" alt="Salt‑water pool" class="h-full w-full object-cover" /></div>
-        <div class="swiper-slide"><img src="images/backyard.jpg" alt="Resort‑style backyard" class="h-full w-full object-cover" /></div>
-      </div>
-      <div class="swiper-button-next !text-white/80 hover:!text-white"></div>
-      <div class="swiper-button-prev !text-white/80 hover:!text-white"></div>
-      <div class="swiper-pagination !bottom-6"></div>
-    </div>
-    <!-- Price overlay -->
-    <div class="pointer-events-none absolute inset-0 z-20 flex items-end justify-center pb-10">
-      <h2 class="rounded bg-black/70 px-6 py-4 text-center text-xl font-bold text-white md:text-3xl lg:text-4xl">$2,000,000 · 4 BED · 3.5 BATH · 3,500 SQFT</h2>
-    </div>
+    <div class="swiper h-full w-full"><div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/FRONT.jpg" class="h-full w-full object-cover" alt></div>
+      <div class="swiper-slide"><img src="images/VIEW.jpg" class="h-full w-full object-cover" alt></div>
+      <div class="swiper-slide"><img src="images/POOL.jpg" class="h-full w-full object-cover" alt></div>
+      <div class="swiper-slide"><img src="images/BACKYARD.jpg" class="h-full w-full object-cover" alt></div>
+    </div><div class="swiper-button-next !text-white/80"></div><div class="swiper-button-prev !text-white/80"></div><div class="swiper-pagination !bottom-6"></div></div>
+    <div class="pointer-events-none absolute inset-0 z-20 flex items-end justify-center pb-10"><h2 class="rounded bg-black/70 px-6 py-4 text-xl font-bold text-white md:text-3xl">$2,000,000 · 4 BED · 3.5 BATH · 3,500 SQFT</h2></div>
   </section>
 
-  <!-- ============================================================= -->
-  <!-- QUOTE STRIP -->
-  <!-- ============================================================= -->
-  <section class="bg-[var(--beige)] py-8 text-center text-lg font-bold text-[var(--ink)] tracking-wide reveal">
-    "Architecture should speak of its time and place, yet yearn for timelessness." – Frank Gehry
-  </section>
+  <!-- QUOTE -->
+  <section class="bg-[var(--beige)] py-8 text-center text-lg font-bold text-[var(--ink)] reveal">“Architecture should speak of its time and place, yet yearn for timelessness.” – Frank Gehry</section>
 
-  <!-- ============================================================= -->
-  <!-- HIGHLIGHTS SECTION -->
-  <!-- ============================================================= -->
-  <section id="highlights" class="bg-white py-28 text-center reveal">
-    <h2 class="text-5xl font-extrabold uppercase tracking-wide text-[var(--ink)]">Modern Luxury Meets Resort Lifestyle</h2>
-    <div class="sep"></div>
-    <p class="mx-auto max-w-[60ch] text-lg leading-relaxed text-gray-700">Crafted for connoisseurs of architecture and leisure, this Las Vegas estate fuses clean modern lines with a backyard worthy of a five-star resort. Panoramic Strip views, smart automation, and exquisite craftsmanship elevate every moment of home life.</p>
-  </section>
+  <!-- HIGHLIGHTS -->
+  <section id="highlights" class="bg-white py-28 text-center reveal"><h2 class="text-5xl font-extrabold uppercase">Modern Luxury Meets Resort Lifestyle</h2><div class="sep"></div><p class="mx-auto max-w-[60ch] text-lg leading-relaxed">Panoramic Strip views, smart automation, and craftsmanship elevate every moment in this desert sanctuary.</p></section>
 
-  <!-- ============================================================= -->
-  <!-- STATISTICS STRIP -->
-  <!-- ============================================================= -->
-  <section class="bg-gray-900 py-20 text-white reveal">
-    <div class="mx-auto grid max-w-5xl grid-cols-2 gap-10 md:grid-cols-4">
-      <div class="text-center"><span class="text-5xl font-bold">630</span><br><span class="text-xs tracking-widest">SQFT CASITA</span></div>
-      <div class="text-center"><span class="text-5xl font-bold">3.5</span><br><span class="text-xs tracking-widest">BATHS</span></div>
-      <div class="text-center"><span class="text-5xl font-bold">4</span><br><span class="text-xs tracking-widest">CAR GARAGE</span></div>
-      <div class="text-center"><span class="text-5xl font-bold">18</span><br><span class="text-xs tracking-widest">MIN TO STRIP</span></div>
-    </div>
-  </section>
+  <!-- STATS -->
+  <section class="bg-gray-900 py-20 text-white reveal"><div class="mx-auto grid max-w-5xl grid-cols-2 gap-10 md:grid-cols-4"><div class="text-center"><span class="text-5xl font-bold">630</span><br><span class="text-xs">SQFT CASITA</span></div><div class="text-center"><span class="text-5xl font-bold">3.5</span><br><span class="text-xs">BATHS</span></div><div class="text-center"><span class="text-5xl font-bold">4</span><br><span class="text-xs">CAR GARAGE</span></div><div class="text-center"><span class="text-5xl font-bold">18</span><br><span class="text-xs">MIN TO STRIP</span></div></div></section>
 
-  <!-- ============================================================= -->
-  <!-- GALLERY – ALTERNATING POSTCARDS -->
-  <!-- ============================================================= -->
-  <section id="gallery" class="space-y-24 bg-[var(--white)] py-28">
-
+  <!-- GALLERY -->
+  <section id="gallery" class="space-y-24 bg-white py-28">
     <!-- CASITA -->
-    <div class="postcard mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-16 shadow-xl reveal fly-left md:grid-cols-2 md:px-12">
-      <img src="images/casita.jpg" alt="630‑sq‑ft casita" class="rounded-lg shadow-2xl" />
-      <div>
-        <h3 class="mb-6 text-4xl font-extrabold uppercase tracking-wide">630‑SF Private Casita</h3>
-        <p class="leading-relaxed text-[var(--ink)]">Double-door entry unveils a fully self‑contained retreat complete with Murphy bed, kitchenette, and full bath—ideal for VIP guests or high‑yield Airbnb stays.</p>
-      </div>
-    </div>
-
-    <!-- CHEF KITCHEN -->
-    <div class="postcard mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-16 shadow-xl reveal fly-right md:grid-cols-2 md:flex-row-reverse md:px-12">
-      <img src="images/kitchen.jpg" alt="Chef kitchen" class="rounded-lg shadow-2xl" />
-      <div>
-        <h3 class="mb-6 text-4xl font-extrabold uppercase tracking-wide">Double‑Island Chef Kitchen</h3>
-        <p class="leading-relaxed text-[var(--ink)]">Quartz counters, twin Sub‑Zero fridges, Wolf range, dual dishwashers, and twin walk‑in pantries—culinary engineering wrapped in museum‑level minimalism.</p>
-      </div>
-    </div>
-
-    <!-- GREAT ROOM -->
-    <div class="postcard mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-16 shadow-xl reveal fly-left md:grid-cols-2 md:px-12">
-      <img src="images/famroom.jpg" alt="Indoor-outdoor great room" class="rounded-lg shadow-2xl" />
-      <div>
-        <h3 class="mb-6 text-4xl font-extrabold uppercase tracking-wide">Indoor‑Outdoor Great Room</h3>
-        <p class="leading-relaxed text-[var(--ink)]">Floor‑to‑ceiling sliders dissolve boundaries, marrying fireplace ambience with poolside breezes for gatherings that flow effortlessly between inside and out.</p>
-      </div>
-    </div>
-
-    <!-- OWNER'S RETREAT -->
-    <div class="postcard mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-16 shadow-xl reveal fly-right md:grid-cols-2 md:flex-row-reverse md:px-12">
-      <img src="images/downstairsmaster.jpg" alt="Owner's retreat" class="rounded-lg shadow-2xl" />
-      <div>
-        <h3 class="mb-6 text-4xl font-extrabold uppercase tracking-wide">Downstairs Owner’s Retreat</h3>
-        <p class="leading-relaxed text-[var(--ink)]">Direct backyard access, boutique walk‑in closet, and spa bath with oversized dual‑entry rain shower—privacy meets indulgence in a single stroke.</p>
-      </div>
-    </div>
-
-    <!-- MEDIA LOFT -->
-    <div class="postcard mx-auto grid max-w-6xl grid-cols-1 items-center gap-16 px-6 py-16 shadow-xl reveal fly-left md:grid-cols-2 md:px-12">
-      <img src="images/mancave.jpg" alt="Media loft" class="rounded-lg shadow-2xl" />
-      <div>
-        <h3 class="mb-6 text-4xl font-extrabold uppercase tracking-wide">Man‑Cave Media Loft</h3>
-        <p class="leading-relaxed text-[var(--ink)]">Wet bar, balcony, and studio insulation—engineered for game day, podcasting success, or clandestine Netflix marathons at concert‑hall volume.</p>
-      </div>
-    </div>
-
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-l"><img src="images/CASITA2.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">630-SF Casita</h3><p>Double-door entry, Murphy bed, kitchenette, living, bath—VIP escape.</p></div></div>
+    <!-- KITCHEN -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-r md:flex-row-reverse"><img src="images/KITCHEN.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">Chef Kitchen</h3><p>Quartz islands, Sub-Zero pair, Wolf suite, dual dishwashers.</p></div></div>
+    <!-- FAM ROOM -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-l"><img src="images/FAMROOM.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">Great Room</h3><p>Fireplace lounge meets pool terrace via pocket sliders.</p></div></div>
+    <!-- FIRE PIT -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-r md:flex-row-reverse"><img src="images/BACKYARDFIREPIT.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">BBQ Terrace</h3><p>Custom smoker, travertine, covered dining—Vegas nights done right.</p></div></div>
+    <!-- PUTTING GREEN -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-l"><img src="images/GOLF.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">Putting Green</h3><p>Perfect your stroke steps from the salt-water pool.</p></div></div>
+    <!-- COURT -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-r md:flex-row-reverse"><img src="images/BASKETBALL.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">Basketball Court</h3><p>Night-lit, regulation key—run drills or pickup under the stars.</p></div></div>
+    <!-- STRIP VIEW -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-l"><img src="images/VIEW.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">Strip View</h3><p>Unobstructed, glittering panoramas—your nightly backdrop.</p></div></div>
+    <!-- MANCAVE -->
+    <div class="postcard mx-auto grid max-w-6xl gap-12 px-6 py-16 shadow-xl reveal fly-r md:flex-row-reverse"><img src="images/MANCAVE.jpg" class="rounded-lg shadow-2xl" alt><div><h3 class="mb-6 text-4xl font-extrabold uppercase">Media Loft</h3><p>Wet bar, balcony, studio insulation—stream, game, jam.</p></div></div>
   </section>
 
-  <!-- ============================================================= -->
-  <!-- CONTACT SECTION -->
-  <!-- ============================================================= -->
-  <section id="contact" class="bg-[var(--beige)] py-32 text-[var(--ink)] reveal">
-    <div class="mx-auto max-w-3xl px-6 text-center">
-      <h2 class="text-5xl font-extrabold uppercase tracking-wide">Book Your Private Tour</h2>
-      <div class="sep"></div>
-      <p class="mx-auto max-w-[50ch] text-lg leading-relaxed">Paul personally confirms every request within 24 hours—expect concierge‑level service from first click to closing celebration.</p>
-      <form class="mt-12 grid gap-6 md:grid-cols-2">
-        <input type="text" name="name" placeholder="Full Name" required class="rounded bg-white p-4 shadow placeholder-[var(--accent)]" />
-        <input type="email" name="email" placeholder="Email Address" required class="rounded bg-white p-4 shadow placeholder-[var(--accent)]" />
-        <input type="tel" name="phone" placeholder="Phone Number" class="rounded bg-white p-4 shadow placeholder-[var(--accent)] md:col-span-2" />
-        <textarea name="message" rows="4" placeholder="Preferred tour date & time" class="rounded bg-white p-4 shadow placeholder-[var(--accent)] md:col-span-2"></textarea>
-        <button type="submit" class="rounded bg-[var(--ink)] px-6 py-4 font-bold uppercase tracking-wide text-white shadow lg:hover:opacity-90 md:col-span-2">Submit</button>
-      </form>
-    </div>
-  </section>
+  <!-- CONTACT -->
+  <section id="contact" class="bg-[var(--beige)] py-32 text-[var(--ink)] reveal"><div class="mx-auto max-w-3xl px-6 text-center"><h2 class="text-5xl font-extrabold uppercase">Book a Tour</h2><div class="sep"></div><p class="mx-auto max-w-[50ch]">Paul replies within 24 hours.</p><form class="mt-12 grid gap-6 md:grid-cols-2"><input placeholder="Name" class="rounded bg-white p-4 shadow placeholder-[var(--accent)]"/><input placeholder="Email" class="rounded bg-white p-4 shadow placeholder-[var(--accent)]"/><input placeholder="Phone" class="rounded bg-white p-4 shadow placeholder-[var(--accent)] md:col-span-2"/><textarea rows="4" placeholder="Preferred date & time" class="rounded bg-white p-4 shadow placeholder-[var(--accent)] md:col-span-2"></textarea><button class="rounded bg-[var(--ink)] px-6 py-4 font-bold uppercase tracking-wide text-white shadow hover:opacity-90 md:col-span-2">Submit</button></form></div></section>
 
-  <!-- ============================================================= -->
-  <!-- ABOUT PAUL -->
-  <!-- ============================================================= -->
-  <section id="about" class="bg-white py-28 reveal">
-    <div class="mx-auto max-w-4xl px-6 text-[var(--ink)]">
-      <h2 class="text-5xl font-extrabold text-center uppercase tracking-wide">Meet Paul Sweeney</h2>
-      <div class="sep"></div>
-      <p class="leading-relaxed">For three decades, <strong>Paul Sweeney</strong> has been the strategist behind thousands of closed luxury transactions across the Vegas valley. Equal parts realtor, mentor, and fine‑arts enthusiast, Paul fuses data‑driven negotiations with a curator’s eye for design—crafting campaigns that turn listings into landmark stories.</p>
-      <p class="mt-6 leading-relaxed">A former learning consultant for national brokerages, Paul has trained hundreds of agents and co‑authored industry best‑practice guides now used nationwide. Clients cite his fearless advocacy, transparent communication, and the uncanny ability to transform stressful deals into seamless journeys.</p>
-      <p class="mt-6 leading-relaxed">When he isn’t orchestrating closings, Paul captures desert light on canvas, hosts community art auctions, and mentors rookie agents—proving success is measured not just in square footage but in the relationships we build.</p>
-    </div>
-  </section>
+  <!-- ABOUT -->
+  <section id="about" class="bg-white py-28 reveal"><div class="mx-auto max-w-5xl grid grid-cols-1 gap-12 px-6 md:grid-cols-2 md:gap-20"><img src="images/PAUL.jpeg" class="grow-l mx-auto h-44 w-44 rounded-full object-cover shadow-xl md:h-60 md:w-60" alt><div><h2 class="text-5xl font-extrabold uppercase">Paul Sweeney</h2><div class="sep"></div><p>Paul once <strong>wrestled a bear</strong> off a client’s patio—then donated the commission to rescued horses. Three decades of deals, zero dull moments.</p><p class="mt-6">Clients call him strategist & friend. He calls luxury real estate an art form…and Vegas his canvas.</p></div></div></section>
 
-  <!-- ============================================================= -->
-  <!-- FOOTER -->
-  <!-- ============================================================= -->
-  <footer class="bg-[var(--ink)] py-10 text-center text-xs tracking-wide text-white">
-    <p>&copy; <span id="year"></span> Paul Sweeney. All rights reserved. Crafted with ❤️ and a double espresso.</p>
-  </footer>
-
-  <!-- ============================================================= -->
-  <!-- SCRIPTS  -->
-  <!-- ============================================================= -->
-  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
-  <script>
-    /* Swiper Init */
-    const heroSwiper = new Swiper('.swiper', {
-      loop: true,
-      autoplay: { delay: 5200, disableOnInteraction: false },
-      speed: 1000,
-      effect: 'fade',
-      pagination: { el: '.swiper-pagination', clickable: true },
-      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
-    });
-
-    /* Scroll Progress Bar */
-    const progressBar = document.getElementById('progress');
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const progress = scrollTop / docHeight;
-      progressBar.style.transform = `scaleX(${progress})`;
-    });
-
-    /* Intersection Observer for Reveal Animations */
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    document.querySelectorAll('.fly-left').forEach(el => observer.observe(el));
-    document.querySelectorAll('.fly-right').forEach(el => observer.observe(el));
-
-    /* Year for Footer */
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
-
-  <!-- ============================================================= -->
-  <!-- END OF DOCUMENT (500+ lines of meticulously‑crafted awesomeness) -->
-  <!-- ============================================================= -->
+  <footer class="bg-[var(--ink)] py-8 text-center text-xs text-white"><p>&copy; <span id="y"></span> Paul Sweeney. All rights reserved.</p></footer>
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>new Swiper('.swiper',{loop:true,autoplay:{delay:5200},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});const b=document.getElementById('bar');addEventListener('scroll',()=>{const s=scrollY,d=document.documentElement.scrollHeight-innerHeight;b.style.transform="scaleX("+s/d+")"});const io=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add('active'),io.unobserve(t.target))})},{threshold:.15});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(x=>io.observe(x));document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
