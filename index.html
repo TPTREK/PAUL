@@ -33,13 +33,13 @@
     .postcard img{width:100%;height:auto;border-radius:.75rem}
     @media(min-width:768px){.postcard{grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}}
     .sep{width:4rem;height:4px;background:var(--accent);margin:2rem auto}
-    /* about section layout */#about .wrapper{display:grid;gap:2rem}#about .profile{width:260px;height:260px;border-radius:50%;object-fit:cover;box-shadow:0 8px 24px rgba(0,0,0,.25)}
+    /* about section layout */#about .wrapper{display:grid;gap:2rem}@media(min-width:768px){#about .wrapper{grid-template-columns:2fr 1fr}}.gradient-bg{background:linear-gradient(var(--beige)0%,var(--tan-light)100%)}{display:grid;gap:2rem}#about .profile{width:260px;height:260px;border-radius:50%;object-fit:cover;box-shadow:0 8px 24px rgba(0,0,0,.25)}
     @media(min-width:768px){#about .wrapper{grid-template-columns:2fr 1fr}}
   </style>
 </head>
 <body>
 <div id="bar"></div>
-<nav class="nav"><a href="#hero">Home</a><a href="#highlights">Highlights</a><a href="#gallery">Gallery</a><a href="#contact">Tour</a><a href="#about">Paul</a></nav>
+<nav class="nav"><a href="#hero">Home</a>$1ABOUT$3$1HIGHLIGHTS$3<a href="#contact">Tour</a><a href="#about">Paul</a></nav>
 
 <!-- HERO FULL‑WIDTH SLIDER w/ CAPTIONS -->
 <section id="hero">
@@ -50,22 +50,24 @@
       <div class="swiper-slide relative"><img src="images/POOL.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Pool, salt water, solar heated</div></div>
       <div class="swiper-slide relative"><img src="images/BACKYARD.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Outdoor eating & travertine patio</div></div>
       <div class="swiper-slide relative"><img src="images/CASITA2.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">630‑SF casita w/ Murphy bed & kitchenette</div></div>
-      <div class="swiper-slide relative"><img src="images/KITCHEN.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Kitchen · double islands · Wolf & Sub‑Zero</div></div>
-      <div class="swiper-slide relative"><img src="images/DOWNSTAIRSMASTER.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Downstairs master bedroom w/ backyard access</div></div>
+      <div class="swiper-slide relative"><img src="images/KITCHEN.jpg" class="rounded-lg shadow-2xl md:order-2" alt><div class="slide-caption">Kitchen · double islands · Wolf & Sub‑Zero</div></div>
+      <div class="swiper-slide relative"><img src="images/DOWNSTAIRSMASTER.jpg" class="rounded-lg shadow-2xl md:order-2" alt><div class="slide-caption">Downstairs master bedroom w/ backyard access</div></div>
       <div class="swiper-slide relative"><img src="images/DOWNSTAIRSMASTERBATH.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Master bath · walk‑in closet + built‑ins</div></div>
       <div class="swiper-slide relative"><img src="images/FAMROOM.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Family room · fireplace & double sliders</div></div>
-      <div class="swiper-slide relative"><img src="images/BACKYARDFIREPIT.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Fire‑pit & custom smoker BBQ station</div></div>
+      <div class="swiper-slide relative"><img src="images/BACKYARDFIREPIT.jpg" class="rounded-lg shadow-2xl" alt><div class="slide-caption">Fire‑pit & custom smoker BBQ station</div></div>
       <div class="swiper-slide relative"><img src="images/VIEWBALCONY.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Media room balcony w/ Strip view</div></div>
-      <div class="swiper-slide relative"><img src="images/MANCAVE.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Man‑cave media room · mini‑fridge & sink</div></div>
+      <div class="swiper-slide relative"><img src="images/MANCAVE.jpg" class="rounded-lg shadow-2xl md:order-2" alt><div class="slide-caption">Man‑cave media room · mini‑fridge & sink</div></div>
       <div class="swiper-slide relative"><img src="images/GOLF.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Putting green</div></div>
       <div class="swiper-slide relative"><img src="images/BASKETBALL.jpg" class="h-full w-full object-cover" alt><div class="slide-caption">Private basketball court</div></div>
     </div>
-    <div class="swiper-pagination !bottom-6"></div>
+    <div class="swiper-button-prev !text-white/70 hover:!text-white"></div>
+      <div class="swiper-button-next !text-white/70 hover:!text-white"></div>
+      <div class="swiper-pagination !bottom-6"></div>
   </div>
 </section>
 
 <!-- CENTERED BEIGE CONTAINER -->
-<section id="highlights" class="center reveal text-center">
+<section id="highlights" class="center reveal text-center mt-24">
   <h2 class="text-5xl font-extrabold uppercase">Modern Luxury Meets Resort Lifestyle</h2>
   <div class="sep"></div>
   <p class="max-w-[65ch] mx-auto text-lg">Panoramic Strip views, smart automation, and craftsmanship elevate every moment in this desert sanctuary. A detached casita welcomes guests, while the main residence showcases a chef kitchen, indoor‑outdoor great room, and resort‑grade backyard.</p>
@@ -90,12 +92,12 @@
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="center reveal text-center mt-32"><h2 class="text-5xl font-extrabold uppercase mb-6">Book Your Private Tour</h2><form class="grid gap-6 md:grid-cols-2"><input placeholder="Name" class="rounded p-4"><input placeholder="Email" class="rounded p-4"><input placeholder="Phone" class="rounded p-4 md:col-span-2"><textarea rows="4" placeholder="Preferred date & time" class="rounded p-4 md:col-span-2"></textarea><button class="rounded bg-[var(--ink)] text-white py-3 font-bold md:col-span-2">Submit</button></form></section>
+<section id="contact" class="center reveal text-center mt-32 rounded-3xl shadow-xl"><h2 class="text-5xl font-extrabold uppercase mb-6">Book Your Private Tour</h2><form class="grid gap-6 md:grid-cols-2"><input placeholder="Name" class="rounded p-4"><input placeholder="Email" class="rounded p-4"><input placeholder="Phone" class="rounded p-4 md:col-span-2"><textarea rows="4" placeholder="Preferred date & time" class="rounded p-4 md:col-span-2"></textarea><button class="rounded bg-[var(--ink)] text-white py-3 font-bold md:col-span-2">Submit</button></form></section>
 
 <!-- ABOUT PAUL -->
-<section id="about" class="center reveal mt-32"><div class="wrapper"><div><h2 class="text-5xl font-extrabold uppercase mb-4">Paul Sweeney</h2><p class="mb-4">For three relentless decades, Paul has rewritten the rules of Vegas luxury—closing thousands of deals, mentoring armies of agents, then funneling commissions to horse rescues because <em>power is pointless without purpose</em>.</p><p class="mb-4">He once wrestled a black bear off a client’s patio without spilling his latte, then negotiated full ask the same afternoon. Clients trust him because chaos bows to his strategy—and because he answers every call like you’re family.</p></div><img src="images/PAUL.jpeg" class="profile grow-l" alt></div></section>
+<section id="about" class="center gradient-bg reveal mt-32" class="center reveal mt-32"><div class="wrapper"><div><h2 class="text-5xl font-extrabold uppercase mb-4">Paul Sweeney</h2><p class="mb-4">For three relentless decades, Paul has rewritten the rules of Vegas luxury—closing thousands of deals, mentoring armies of agents, then funneling commissions to horse rescues because <em>power is pointless without purpose</em>.</p><p class="mb-4">He once wrestled a black bear off a client’s patio without spilling his latte, then negotiated full ask the same afternoon. Clients trust him because chaos bows to his strategy—and because he answers every call like you’re family.</p></div><img src="images/PAUL.jpeg" class="profile grow-l" alt></div></section>
 
-<footer class="bg-[var(--ink)] py-8 text-center text-xs text-white"><p>&copy; <span id="y"></span> Paul Sweeney. Crafted with ♥ and a double espresso.</p></footer>
+<footer class="bg-white py-8 text-center text-[10px] italic text-gray-600"><p>&copy; <span id="y"></span> Paul Sweeney · REALTOR · ARTIST · FRIEND.</p></footer>
 
 <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>new Swiper('.swiper',{loop:true,autoplay:{delay:4500},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true}});const b=document.getElementById('bar');addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;b.style.transform=`scaleX(${s/d})`});const io=new IntersectionObserver(es=>{es.forEach(e=>{e.isIntersecting&&(e.target.classList.add('active'),io.unobserve(e.target))})},{threshold:.15});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(el=>io.observe(el));document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
