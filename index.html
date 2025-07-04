@@ -5,41 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Las Vegas Luxury Home · $2,000,000</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.4.4/dist/tailwind.min.css" rel="stylesheet" />
-  <!-- FONTS -->
+  <link rel="stylesheet" href="https://unpkg.com/swiper@10/swiper-bundle.min.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     body { font-family: 'Inter', sans-serif; }
+    /* Hide scrollbar on desktop for cleaner look */
+    .swiper::-webkit-scrollbar { display: none; }
   </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
-  <!-- HERO -->
-  <header class="relative h-screen w-full">
-    <img src="/images/hero.jpg" alt="Luxury Home Exterior" class="absolute inset-0 h-full w-full object-cover" />
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center text-white">
-      <h1 class="text-4xl font-semibold md:text-6xl">Modern Elegance in Las Vegas</h1>
-      <p class="mt-4 text-xl md:text-2xl">$2,000,000 · 4 Bed · 3.5 Bath · 3,500 sqft</p>
-      <a href="#contact" class="mt-8 rounded-full bg-white/90 px-8 py-3 text-lg font-semibold text-gray-900 shadow hover:bg-white">
-        Schedule a Tour
-      </a>
+  <!-- FULLSCREEN SLIDESHOW -->
+  <section class="relative h-screen w-full" id="slideshow">
+    <div class="swiper h-full w-full">
+      <div class="swiper-wrapper">
+        <!-- 🖼️ Replace the src values below with your real file names exactly as they appear in the repo -->
+        <div class="swiper-slide"><img src="630%20SF%20CASITA%20WITH%20DOUBLE%20....jpg" alt="Front Exterior" class="h-full w-full object-cover" /></div>
+        <div class="swiper-slide"><img src="Front%20Twilight.jpg" alt="Front Twilight" class="h-full w-full object-cover" /></div>
+        <div class="swiper-slide"><img src="Family%20Room%20WITH%20FIREPLACE....jpg" alt="Family Room" class="h-full w-full object-cover" /></div>
+        <div class="swiper-slide"><img src="Kitchen%20FEATURES%20DOUBLE%20I....jpg" alt="Kitchen" class="h-full w-full object-cover" /></div>
+        <div class="swiper-slide"><img src="Salt%20WATER%2C%20SOLAR%20HEATED.jpg" alt="Pool" class="h-full w-full object-cover" /></div>
+        <!-- ➕ Duplicate the slide block above for each additional photo -->
+      </div>
+      <!-- Nav arrows & pagination -->
+      <div class="swiper-button-next !text-white/80 hover:!text-white"></div>
+      <div class="swiper-button-prev !text-white/80 hover:!text-white"></div>
+      <div class="swiper-pagination !bottom-6"></div>
     </div>
-  </header>
 
-  <!-- GALLERY -->
-  <section class="mx-auto max-w-6xl px-6 py-16" id="gallery">
-    <h2 class="text-3xl font-semibold">Gallery</h2>
-    <div class="mt-8 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      <!-- Replace src paths with real images -->
-      <img src="/images/photo1.jpg" alt="Living Room" class="h-64 w-full rounded-lg object-cover" />
-      <img src="/images/photo2.jpg" alt="Kitchen" class="h-64 w-full rounded-lg object-cover" />
-      <img src="/images/photo3.jpg" alt="Primary Suite" class="h-64 w-full rounded-lg object-cover" />
-      <img src="/images/photo4.jpg" alt="Backyard Pool" class="h-64 w-full rounded-lg object-cover" />
-      <img src="/images/photo5.jpg" alt="Home Theater" class="h-64 w-full rounded-lg object-cover" />
-      <img src="/images/photo6.jpg" alt="Aerial View" class="h-64 w-full rounded-lg object-cover" />
+    <!-- HEADER OVERLAY -->
+    <div class="pointer-events-none absolute inset-0 flex items-start justify-center pt-8">
+      <h1 class="rounded bg-black/60 px-4 py-2 text-center text-base font-semibold tracking-widest text-white md:text-xl lg:text-2xl">
+        PAUL SWEENEY · REALTOR · ARTIST · FRIEND
+      </h1>
     </div>
   </section>
 
-  <!-- DETAILS -->
+  <!-- PROPERTY DETAILS (unchanged) -->
   <section class="bg-white py-16" id="details">
     <div class="mx-auto max-w-6xl px-6">
       <h2 class="text-3xl font-semibold">Property Details</h2>
@@ -76,7 +77,7 @@
     </div>
   </section>
 
-  <!-- MAP -->
+  <!-- LOCATION MAP -->
   <section class="mx-auto max-w-6xl px-6 py-16" id="location">
     <h2 class="text-3xl font-semibold">Location</h2>
     <div class="mt-8 h-96 w-full overflow-hidden rounded-lg shadow-lg">
@@ -87,7 +88,7 @@
     </div>
   </section>
 
-  <!-- CONTACT -->
+  <!-- CONTACT FORM -->
   <section class="bg-gray-900 py-16 text-white" id="contact">
     <div class="mx-auto max-w-4xl px-6">
       <h2 class="text-3xl font-semibold">Schedule a Private Tour</h2>
@@ -101,30 +102,30 @@
     </div>
   </section>
 
-  <!-- AGENT -->
-  <section class="mx-auto max-w-6xl px-6 py-16" id="agent">
-    <h2 class="text-3xl font-semibold">Meet Your Agent</h2>
-    <div class="mt-8 flex flex-col items-center gap-6 md:flex-row">
-      <img src="/images/agent.jpg" alt="Agent Photo" class="h-40 w-40 rounded-full object-cover shadow-lg" />
-      <div>
-        <h3 class="text-2xl font-semibold">John Doe</h3>
-        <p class="mt-2 text-gray-600">Luxury Property Specialist · License #S.1234567</p>
-        <p class="mt-4">With 15 years of experience selling high end Las Vegas real estate, John knows how to connect the right buyer with the perfect home. He values transparency, professionalism, and white glove service.</p>
-        <div class="mt-4 flex gap-4">
-          <a href="tel:+17025555555" class="text-blue-600 underline">Call</a>
-          <a href="mailto:john@example.com" class="text-blue-600 underline">Email</a>
-          <a href="https://www.linkedin.com" target="_blank" class="text-blue-600 underline">LinkedIn</a>
-        </div>
-      </div>
+  <!-- ABOUT PAUL -->
+  <section class="bg-white py-16" id="about">
+    <div class="mx-auto max-w-4xl px-6 text-gray-700">
+      <h2 class="text-3xl font-semibold text-center">About Paul</h2>
+      <p class="mt-6">For more than three decades, Paul Sweeney has been a fixture in the Las Vegas real‑estate scene. A native of the city for over 50 years, he has worn every hat in the business—agent, broker, manager, and owner—guiding buyers and sellers through thousands of transactions across every market cycle. His tenure at Elite Realty is backed by deep knowledge of the valley’s neighborhoods, an obsession with customer service, and a reputation for teaching the craft; Paul spent 15+ years as a learning consultant for national brands and even helped write the book on modern real‑estate best practices.([eliterealty.net](https://eliterealty.net/agent/2476/Paul-Sweeney?utm_source=chatgpt.com), [realtor.com](https://www.realtor.com/realestateagents/56ce805a89a68901006fc459?utm_source=chatgpt.com))</p>
+      <p class="mt-4">Beyond contracts and comps, Paul is an artist at heart—capturing local landscapes on canvas and bringing that same creative eye to bespoke marketing campaigns for each listing. Clients routinely describe him as part strategist, part friend: someone who listens first, negotiates fearlessly, and celebrates every closing with genuine gratitude. Whether you’re relocating, upgrading, or investing in the city he calls home, Paul’s goal is simple: deliver a white‑glove experience that turns real‑estate decisions into lasting relationships.([propertysimple.com](https://www.propertysimple.com/paul-d-sweeney?video_landing=true&utm_source=chatgpt.com))</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer class="bg-gray-100 py-6 text-center text-sm text-gray-500">
-    <p>&copy; <span id="year"></span> Doe Realty. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Paul Sweeney. All rights reserved.</p>
   </footer>
 
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script>
   <script>
+    const swiper = new Swiper('.swiper', {
+      loop: true,
+      autoplay: { delay: 4500, disableOnInteraction: false },
+      speed: 800,
+      effect: 'fade',
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+    });
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
