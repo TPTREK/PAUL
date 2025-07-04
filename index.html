@@ -11,64 +11,59 @@
   <style>
     :root{--beige:#e8dcc7;--ink:#0d0d0d;--accent:#c0aa8a;--tan-light:#f5eee4;--shadow:0 12px 28px rgba(0,0,0,.12)}
     html{scroll-behavior:smooth}
-    body{font-family:'Poppins',sans-serif;margin:0;background:#fff;color:var(--ink);text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
+    body{font-family:'Poppins',sans-serif;margin:0;color:var(--ink);background:#fff;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
     @media(max-width:600px){body{font-size:1.05rem}}
-
-    /* Progress bar */
     #bar{position:fixed;top:0;left:0;height:4px;background:var(--beige);transform-origin:0 0;z-index:90}
 
-    /* Navigation */
-    .nav{background:var(--beige);position:fixed;top:0;left:0;width:100%;z-index:80;display:flex;justify-content:center;gap:2.5rem;padding:.9rem 1.2rem;transition:transform .4s,opacity .4s}
+    /* --- NAV --- */
+    .nav{background:var(--beige);position:fixed;top:0;left:0;width:100%;z-index:80;display:flex;justify-content:center;gap:2.5rem;padding:1rem 1.2rem;transition:transform .4s,opacity .4s}
     .nav.hide{transform:translateY(-100%);opacity:0}
-    .nav a{color:#fff;font-weight:800;font-size:.9rem;letter-spacing:.17em;text-transform:uppercase;padding:.8rem 1.5rem;transition:opacity .25s}
+    .nav a{color:#fff;font-weight:800;font-size:.95rem;letter-spacing:.17em;text-transform:uppercase;padding:.55rem 1.2rem;transition:opacity .25s}
     .nav a:hover{opacity:.85}
 
-    /* Swiper Hero */
+    /* --- SWIPER HERO FIX --- */
     .swiper{width:100vw;height:100vh}
+    .swiper-wrapper{display:flex}
+    .swiper-slide{flex-shrink:0;width:100%;height:100%;position:relative}
     .swiper-slide img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
     .swiper-slide:hover img{transform:scale(1.04) rotate(.3deg)}
     .slide-caption{position:absolute;bottom:0;left:0;width:100%;padding:1rem 2rem;font-size:.95rem;background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,.65)100%);color:#fff;opacity:0;transition:opacity .3s}
     .swiper-slide:hover .slide-caption{opacity:1}
-    /* Hero navigation buttons */
-    .hero-btn{position:absolute;top:50%;transform:translateY(-50%);width:64px;height:64px;border-radius:50%;background:rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow);cursor:pointer;transition:background .25s}
-    .hero-btn:hover{background:#fff}
-    .hero-btn svg{width:28px;height:28px;stroke:var(--ink);stroke-width:2}{position:absolute;bottom:0;left:0;width:100%;padding:1rem 2rem;font-size:.95rem;background:linear-gradient(180deg,rgba(0,0,0,0)0%,rgba(0,0,0,.65)100%);color:#fff;opacity:0;transition:opacity .3s}
-    .swiper-slide:hover .slide-caption{opacity:1}
-    .hero-arrow{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;z-index:10;transition:background .25s}.hero-arrow:hover{background:rgba(255,255,255,.85)}.hero-arrow svg{width:20px;height:20px;stroke:var(--ink);}
+    .swiper-button-prev,.swiper-button-next{color:#fff;width:52px;height:52px}
 
-    /* Scroll arrow */
+    /* --- ARROW ICON --- */
     .arrow{position:absolute;bottom:1.4rem;left:50%;transform:translateX(-50%);width:34px;height:34px;animation:bounce 2s infinite}
-    @keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-9px)}60%{transform:translate(-50%,-5px)}}
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-10px)}60%{transform:translate(-50%,-5px)}}
 
-    /* Center card */
-    .center{background:var(--beige);max-width:1200px;margin:-6rem auto 0;padding:5rem 3rem;border-radius:1.5rem;box-shadow:var(--shadow)}
+    /* --- CENTER CARD --- */
+    .center{background:var(--beige);max-width:1200px;margin:-8rem auto 0;padding:5rem 3rem;border-radius:1.5rem;box-shadow:var(--shadow)}
 
-    /* Reveal */
+    /* --- REVEAL --- */
     .reveal{opacity:0;transform:translateY(60px);transition:all .8s cubic-bezier(.25,.8,.25,1)}
     .reveal.active{opacity:1;transform:none}
-    .fly-l{opacity:0;transform:translateX(-90px)}.fly-r{opacity:0;transform:translateX(90px)}
+    .fly-l{opacity:0;transform:translateX(-100px)}.fly-r{opacity:0;transform:translateX(100px)}
     .fly-l.active,.fly-r.active{opacity:1;transform:none;transition:all 1s cubic-bezier(.22,1,.36,1)}
     .grow-l{opacity:0;transform:scale(.55) translateX(120px);transition:all 1.2s cubic-bezier(.22,1,.36,1)}
     .grow-l.active{opacity:1;transform:none}
 
-    /* Postcards */
+    /* --- Postcards --- */
     .postcard{background:var(--tan-light);border-radius:1rem;display:grid;gap:2.5rem;padding:3.2rem;box-shadow:var(--shadow)}
     .postcard img{width:100%;border-radius:.8rem}
     @media(min-width:768px){.postcard{grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}}
 
-    .sep{width:4rem;height:4px;background:var(--accent);margin:2rem auto}
+    .sep{width:4rem;height:4px;background:var(--accent);margin:2.5rem auto}
 
-    /* About */
+    /* --- About --- */
     #about{background:linear-gradient(var(--beige)0%,var(--tan-light)100%)}
     #about .wrapper{display:grid;gap:2.4rem}@media(min-width:768px){#about .wrapper{grid-template-columns:2fr 1fr}}
     .profile{width:280px;height:280px;border-radius:50%;object-fit:cover;box-shadow:var(--shadow)}
 
-    /* Contact form */
+    /* --- Contact --- */
     .contact-card input,.contact-card textarea{border:none;background:#fff;border-radius:.6rem;padding:1rem;box-shadow:var(--shadow);width:100%}
     .contact-card textarea{resize:vertical}
 
     /* Footer */
-    footer{text-align:center;padding:2rem 0;font-size:.8rem;font-style:italic;color:#555}
+    footer{text-align:center;padding:2rem 0;font-size:.85rem;font-style:italic;color:#555}
   </style>
 </head>
 <body>
@@ -103,7 +98,7 @@
   </section>
 
   <!-- CENTER CARD -->
-  <section id="highlights" class="center reveal text-center mt-56"><h2 class="text-5xl font-extrabold uppercase mb-4">Modern Luxury Meets Resort Lifestyle</h2><div class="sep"></div><p class="mx-auto max-w-[65ch] text-lg">Panoramic Strip views, smart automation, and award-winning craftsmanship elevate every moment.</p></section>
+  <section id="highlights" class="center reveal text-center mt-72"><h2 class="text-5xl font-extrabold uppercase mb-4">Modern Luxury Meets Resort Lifestyle</h2><div class="sep"></div><p class="mx-auto max-w-[65ch] text-lg">Panoramic Strip views, smart automation, and award-winning craftsmanship elevate every moment.</p></section>
 
   <!-- GALLERY CARDS -->
   <section id="gallery" class="py-32 space-y-28">
@@ -124,6 +119,6 @@
   <footer>&copy; <span id="y"></span> Paul Sweeney · REALTOR · ARTIST · FRIEND.</footer>
 
   <!-- SCRIPTS -->
-  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>const swiper=new Swiper('.swiper',{loop:true,autoplay:{delay:4500},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'#heroNext',prevEl:'#heroPrev'}});const bar=document.getElementById('bar');window.addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;bar.style.transform=`scaleX(${s/d})`});let last=0;const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('hide',y>last&&y>150);last=y});const io=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add('active'),io.unobserve(t.target))})},{threshold:.12});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(x=>io.observe(x));document.getElementById('y').textContent=new Date().getFullYear();</script>
+  <script src="https://unpkg.com/swiper@10/swiper-bundle.min.js"></script><script>const swiper=new Swiper('.swiper',{loop:true,preloadImages:false,lazy:{loadPrevNext:true},autoplay:{delay:5000,disableOnInteraction:false},speed:1000,effect:'fade',pagination:{el:'.swiper-pagination',clickable:true},navigation:{nextEl:'.swiper-button-next',prevEl:'.swiper-button-prev'}});const bar=document.getElementById('bar');window.addEventListener('scroll',()=>{const s=scrollY,d=document.body.scrollHeight-innerHeight;bar.style.transform=`scaleX(${s/d})`});let last=0;const nav=document.getElementById('mainNav');window.addEventListener('scroll',()=>{const y=scrollY;nav.classList.toggle('hide',y>last&&y>150);last=y});const io=new IntersectionObserver(e=>{e.forEach(t=>{t.isIntersecting&&(t.target.classList.add('active'),io.unobserve(t.target))})},{threshold:.12});document.querySelectorAll('.reveal,.fly-l,.fly-r,.grow-l').forEach(x=>io.observe(x));document.getElementById('y').textContent=new Date().getFullYear();</script>
 </body>
 </html>
